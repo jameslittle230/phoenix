@@ -26,66 +26,66 @@ var windowLocations = {
     width: scr.width - paddingRight,
     height: scr.height - paddingBottom
   }},
-  left: {
+  left: function() { return {
     y: paddingTop,
     x: paddingLeft,
     width: halfWidth - paddingCenter,
     height: scr.height - paddingBottom
-  },
-  right: {
+  }},
+  right: function() { return {
     y: paddingTop,
     x: halfWidth + paddingLeft + paddingCenter,
     width: halfWidth,
     height: scr.height - paddingBottom
-  },
+  }},
   //Corners
-  topRight: {
+  topRight: function() { return {
     y: paddingTop,
     x: halfWidth + paddingLeft + paddingCenter,
     width: halfWidth,
     height: halfHeight
-  },
-  bottomRight: {
+  }},
+  bottomRight: function() { return {
     y: halfHeight + paddingTop + paddingMiddle,
     x: halfWidth + paddingLeft + paddingCenter,
     width: halfWidth,
     height: halfHeight
-  },
-  topLeft: {
+  }},
+  topLeft: function() { return {
     y: paddingTop,
     x: paddingLeft,
     width: halfWidth - paddingCenter,
     height: halfHeight
-  },
-  bottomLeft: {
+  }},
+  bottomLeft: function() { return {
     y: halfHeight + paddingTop + paddingMiddle,
     x: paddingLeft,
     width: halfWidth - paddingCenter,
     height: halfHeight
-  },
+  }},
   // Extra sizes
-  rightTwoThirds: {
+  rightTwoThirds: function() { return {
     y: paddingTop,
     x: thirdWidth + paddingLeft + paddingCenter,
     width: thirdWidth * 2,
     height: scr.height - paddingBottom
-  },
-  leftTwoThirds: {
+  }},
+  leftTwoThirds: function() { return {
     y: paddingTop,
     x: paddingLeft,
     width: thirdWidth * 2 - paddingCenter,
     height: scr.height - paddingBottom
-  },
-  leftThird: {
+  }},
+  leftThird: function() { return {
     y: paddingTop,
     x: paddingLeft,
     width: thirdWidth - paddingCenter,
     height: scr.height - paddingBottom
-  },
-  rightThird: {
+  }},
+  rightThird: function() { return {
     y: paddingTop,
     x: thirdWidth * 2 + paddingLeft + paddingCenter,
     width: thirdWidth,
     height: scr.height - paddingBottom
-  }
+  }}
 };

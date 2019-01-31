@@ -1,67 +1,64 @@
 function moveFocusedWindow(location) {
-  scr = Screen.main().flippedVisibleFrame();
-  Phoenix.log(scr.width)
+  // scr = Screen.main().flippedVisibleFrame();
   var win = Window.focused();
-
+  Phoenix.log(location.x, location.y, location.height, location.width)
   win.setFrame(location)
 }
 
 var left = new Key("a", MOD, () => {
-  if (_.isEqual(Window.focused().frame(), windowLocations.left)) {
-    moveFocusedWindow(windowLocations.leftThird);
+  if (_.isEqual(Window.focused().frame(), windowLocations.left())) {
+    moveFocusedWindow(windowLocations.leftThird());
     return;
   }
 
-  if (_.isEqual(Window.focused().frame(), windowLocations.leftThird)) {
-    moveFocusedWindow(windowLocations.leftTwoThirds);
+  if (_.isEqual(Window.focused().frame(), windowLocations.leftThird())) {
+    moveFocusedWindow(windowLocations.leftTwoThirds());
     return;
   }
 
-  moveFocusedWindow(windowLocations.left);
-  Window.focused().neighbors("east").forEach(w => w.setFrame(windowLocations.right));
+  moveFocusedWindow(windowLocations.left());
 });
 
 var right = new Key("d", MOD, () => {
-  if (_.isEqual(Window.focused().frame(), windowLocations.right)) {
-    moveFocusedWindow(windowLocations.rightThird);
+  if (_.isEqual(Window.focused().frame(), windowLocations.right())) {
+    moveFocusedWindow(windowLocations.rightThird());
     return;
   }
 
-  if (_.isEqual(Window.focused().frame(), windowLocations.rightThird)) {
-    moveFocusedWindow(windowLocations.rightTwoThirds);
+  if (_.isEqual(Window.focused().frame(), windowLocations.rightThird())) {
+    moveFocusedWindow(windowLocations.rightTwoThirds());
     return;
   }
 
-  moveFocusedWindow(windowLocations.right);
-  Window.focused().neighbors("west").forEach(w => w.setFrame(windowLocations.left));
+  moveFocusedWindow(windowLocations.right());
 });
 
 // Move focused window to corners
 var topRight = new Key("e", MOD, () => {
-  moveFocusedWindow(windowLocations.topRight);
+  moveFocusedWindow(windowLocations.topRight());
 });
 
 var topLeft = new Key("q", MOD, () => {
-  moveFocusedWindow(windowLocations.topLeft);
+  moveFocusedWindow(windowLocations.topLeft());
 });
 
 var bottomRight = new Key("c", MOD, () => {
-  moveFocusedWindow(windowLocations.bottomRight);
+  moveFocusedWindow(windowLocations.bottomRight());
 });
 
 var bottomLeft = new Key("z", MOD, () => {
-  moveFocusedWindow(windowLocations.bottomLeft);
+  moveFocusedWindow(windowLocations.bottomLeft());
 });
 
 // Maximize window (not fullscreen)
 var maximizeWindow = new Key("r", MOD, () => {
-  moveFocusedWindow(windowLocations.full); //.maximize();
+  moveFocusedWindow(windowLocations.full()); //.maximize();
 });
 
 var nextScreen = new Key("v", MOD, () => {
-  Phoenix.log("Got here")
+  Phoenix.log(Screen.all()[1])
   Screen.all()[1].currentSpace().addWindows([Window.focused()]);
-  moveFocusedWindow(windowLocations.full);
+  Phoenix.log(Window.focused().screen())
 });
 
 // Minimize window

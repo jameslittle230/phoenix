@@ -47,26 +47,3 @@ var focusWest = new Key("h", MOD, () => {
 var focusSouth = new Key("j", MOD, () => {
   focus("south");
 });
-
-let startFocus = new Key("v", MOD, () => {
-  if (Window.focused() === undefined || !Window.focused().isVisible()) {
-    if (Window.recent().length > 0) {
-      newWindow = Window.recent()[0];
-      newWindow.focus();
-    } else {
-      screen = Screen.main().flippedVisibleFrame();
-      Modal.build({
-        origin(modal) {
-          return {
-            x: screen.width / 2 - modal.width / 2,
-            y: screen.height / 2
-          };
-        },
-        weight: 20,
-        duration: 1,
-        appearance: "dark",
-        text: "No windows available"
-      }).show();
-    }
-  }
-});
